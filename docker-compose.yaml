@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  memcached:
+    image: memcached
+
+  server:
+    build: .
+    ports:
+     - "8000:8000"
+
+  client:
+    image: williamyeh/hey
+    command: -z 20s http://server:8000/
